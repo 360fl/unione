@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>UniOne (V2 - Terracotta & Amber Grid)</title>
+  <meta name="description" content="Verified student collaboration and career discovery network.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="logo_v2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-v2.css">
+</head>
+<body class="unione-app-body">
+
+  <!-- Concept V2 Switcher Banner -->
+  <div class="v2-concept-badge-strip">
+    <span class="v2-live-tag"><span class="v2-dot"></span> <strong>Concept V2</strong> &bull; Terracotta &amp; Ambient Tech Grid</span>
+    <a href="index.html">&larr; Switch to V1 (Forest)</a>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 0. CLEAN SPLASH SCREEN                    -->
+  <!-- ========================================== -->
+  <div class="splash-screen" id="splashScreen">
+    <div class="splash-content">
+      <div class="splash-logo-container">
+        <div class="logo-glow-ring"></div>
+        <img src="logo_v2.png" alt="UniOne" class="splash-brand-logo" width="80" height="90">
+      </div>
+      <h1 class="splash-title">Uni<span>One</span></h1>
+      <p class="splash-tagline">Superior Verified Network</p>
+      <div class="splash-loader-area">
+        <div class="splash-progress-track">
+          <div class="splash-progress-bar" id="splashProgressBar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TOP HEADER (Logo Centered & Minimal Text)  -->
+  <!-- ========================================== -->
+  <header class="app-top-header" id="topNavbar">
+    <!-- Left Action -->
+    <div class="header-left">
+      <button class="header-action-btn" id="btnToggleSearch" title="Search">
+        <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      </button>
+    </div>
+
+    <!-- CENTER: Brand Logo & Title (Prominently Centered) -->
+    <div class="header-center-brand" id="brandLogoTrigger">
+      <div class="center-logo-wrap">
+        <img src="logo_v2.png" alt="UniOne Logo" width="30" height="34" class="center-brand-img">
+      </div>
+      <span class="center-brand-name">Uni<span class="green-highlight">One</span></span>
+    </div>
+
+    <!-- Right Action -->
+    <div class="header-right">
+      <button class="header-action-btn has-dot" id="btnNotificationsToggle" title="Notifications">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="notif-badge-dot" id="notifUnreadBadge">3</span>
+      </button>
+
+      <button class="header-profile-avatar" id="btnOpenProfileHeader" title="Profile">
+        <span>AH</span>
+      </button>
+    </div>
+
+    <!-- Live Search Overlay -->
+    <div class="header-search-bar hidden" id="headerSearchBar">
+      <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="globalSearchInput" placeholder="Search discussions, peers, jobs..." autocomplete="off">
+      <button class="close-search-btn" id="btnCloseSearch">
+        <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="search-results-dropdown hidden" id="searchQuickDropdown"></div>
+    </div>
+
+    <!-- Notifications Popover -->
+    <div class="popover-dropdown notifications-panel hidden" id="notificationsDropdown">
+      <div class="dropdown-header">
+        <h4>Notifications</h4>
+        <button class="text-link-btn" id="btnMarkAllNotifsRead">Clear</button>
+      </div>
+      <div class="notifications-scroll" id="notificationsList"></div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN APP CONTAINER                         -->
+  <!-- ========================================== -->
+  <main class="app-main-viewport" id="mainContainer">
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 1: FEED (Minimal, Clean Posts)      -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane active" id="pane-feed">
+      <!-- Minimal Composer Bar -->
+      <div class="feed-composer-bar" id="triggerComposerBox">
+        <div class="composer-user-avatar">AH</div>
+        <div class="composer-placeholder">Share a question, collab, or resource...</div>
+        <button class="composer-add-btn">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+      </div>
+
+      <!-- Filter Chips Row -->
+      <div class="feed-filters-strip">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="discussion">Discussions</button>
+        <button class="filter-pill" data-filter="collab">Collabs</button>
+        <button class="filter-pill" data-filter="resource">Resources</button>
+        <button class="filter-pill sort-pill" id="btnToggleSort">
+          <span id="currentSortLabel">Best</span>
+        </button>
+      </div>
+
+      <!-- Feed Stream -->
+      <div class="feed-posts-stream" id="postsFeedContainer"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 2: COMMUNITIES                      -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-communities">
+      <div class="minimal-page-header">
+        <h2>Communities</h2>
+        <span class="sub-counter">7 Campus Hubs</span>
+      </div>
+
+      <div class="category-pills-row">
+        <button class="cat-pill active" data-comm-filter="all">All</button>
+        <button class="cat-pill" data-comm-filter="academic">Study</button>
+        <button class="cat-pill" data-comm-filter="project">Projects</button>
+        <button class="cat-pill" data-comm-filter="career">Careers</button>
+        <button class="cat-pill" data-comm-filter="interest">Interest</button>
+      </div>
+
+      <div class="communities-cards-list" id="communitiesGrid"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 3: COLLABS (Team Recruitment)       -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-collab">
+      <div class="minimal-page-header">
+        <h2>Collaboration</h2>
+        <button class="mini-action-pill" id="btnPostCollabHero">+ Post Request</button>
+      </div>
+
+      <div class="collab-cards-list" id="collabDirectoryGrid"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 4: CAREERS (Verified Jobs)          -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-opportunities">
+      <div class="minimal-page-header">
+        <h2>Career Board</h2>
+        <span class="verified-tag-indicator">Verified Employers</span>
+      </div>
+
+      <div class="category-pills-row">
+        <button class="opp-filter-pill active" data-opp-type="all">All</button>
+        <button class="opp-filter-pill" data-opp-type="internship">Internships</button>
+        <button class="opp-filter-pill" data-opp-type="graduate">Jobs</button>
+        <button class="opp-filter-pill" data-opp-type="research">Grants</button>
+      </div>
+
+      <div class="opportunities-cards-list" id="opportunitiesContainer"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 5: MESSAGES (Chat & Requests)       -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-messages">
+      <!-- Conversation Stage View (Clean Mobile-Native) -->
+      <div class="chat-wrapper" id="chatWrapper">
+        <!-- Conversations List Subview -->
+        <div class="chat-list-view" id="chatListView">
+          <div class="chat-tabs-switch">
+            <button class="chat-tab-btn active" id="btnSwitchDirectChat">
+              <span>Chats</span>
+              <span class="counter-dot" id="chatActiveCount">4</span>
+            </button>
+            <button class="chat-tab-btn" id="btnSwitchRequestsChat">
+              <span>Requests</span>
+              <span class="counter-dot alert" id="chatRequestsCount">2</span>
+            </button>
+          </div>
+
+          <div class="conversations-scroll-box" id="convsList"></div>
+          <div class="requests-scroll-box hidden" id="reqsList"></div>
+        </div>
+
+        <!-- Active Chat Room Subview -->
+        <div class="chat-active-view hidden" id="chatActiveStage">
+          <header class="active-chat-bar">
+            <button class="chat-back-btn" id="btnBackToChatList">
+              <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="chat-user-meta">
+              <div class="chat-user-avatar" id="activeChatAvatar">SA</div>
+              <div class="chat-user-names">
+                <strong id="activeChatName">Sohaib Ammar</strong>
+                <span id="activeChatSub">Online</span>
+              </div>
+            </div>
+            <button class="chat-flag-btn" id="btnReportChatUser" title="Report">
+              <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+            </button>
+          </header>
+
+          <div class="chat-bubbles-scroll" id="activeChatMessagesScroll"></div>
+
+          <div class="chat-typing-row hidden" id="chatTypingRow">
+            <span id="chatTypingName">Sohaib</span> is typing...
+          </div>
+
+          <form class="chat-bottom-input-bar" id="activeChatSendForm">
+            <input type="text" id="inputChatMessageText" placeholder="Write a message..." autocomplete="off">
+            <button type="submit" class="chat-send-icon-btn">
+              <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 6: PROFILE (Accessible via Avatar)   -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-profile">
+      <div class="profile-card">
+        <div class="profile-header-strip"></div>
+        <div class="profile-avatar-wrap">
+          <div class="profile-img-avatar">AH</div>
+          <span class="verified-badge-pill">
+            <svg class="svg-icon mini" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+        </div>
+
+        <div class="profile-info-block">
+          <h3>Ali Haroon</h3>
+          <span class="roll-number-tag" id="profileRollTag">SU92-BSSEM-F24-296</span>
+          <p class="profile-dept">BS Software Engineering • Superior University</p>
+          <p class="profile-bio-snippet">Full-stack & Flutter developer building verified university networks.</p>
+        </div>
+
+        <div class="profile-stats-row">
+          <div class="stat-cell">
+            <strong>18</strong>
+            <span>Posts</span>
+          </div>
+          <div class="stat-cell">
+            <strong>6</strong>
+            <span>Hubs</span>
+          </div>
+          <div class="stat-cell">
+            <strong>3</strong>
+            <span>Projects</span>
+          </div>
+        </div>
+
+        <div class="profile-section-block">
+          <h4>Verified Skills</h4>
+          <div class="skills-chips-row">
+            <span class="skill-tag">Flutter & Dart</span>
+            <span class="skill-tag">NestJS / Node</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Drift SQLite</span>
+          </div>
+        </div>
+
+        <div class="profile-section-block">
+          <h4>Settings</h4>
+          <div class="setting-toggle-row">
+            <span>Show Roll Number</span>
+            <label class="switch">
+              <input type="checkbox" checked id="toggleRollVisibility">
+              <span class="slider round"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- PERFECT APP FOOTER (Bottom Navigation Bar) -->
+  <!-- ========================================== -->
+  <nav class="app-bottom-footer" id="appBottomFooter">
+    <button class="footer-nav-tab active" data-tab="feed">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      </div>
+      <span class="footer-label">Feed</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="communities">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <span class="footer-label">Hubs</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="collab">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+      </div>
+      <span class="footer-label">Collabs</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="opportunities">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      </div>
+      <span class="footer-label">Careers</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="messages">
+      <div class="footer-icon-shell has-badge">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span class="footer-tab-badge" id="footerMsgBadge">4</span>
+      </div>
+      <span class="footer-label">Chat</span>
+    </button>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- MODALS (Clean & Compact)                   -->
+  <!-- ========================================== -->
+
+  <!-- Composer Modal -->
+  <div class="modal-backdrop-overlay hidden" id="composerModal">
+    <div class="modal-card-box">
+      <div class="modal-header-bar">
+        <h3>Create Post</h3>
+        <button class="close-modal-icon-btn" id="btnCloseComposer">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="type-pills-selector">
+        <button class="type-pill-btn active" data-type="discussion">Discussion</button>
+        <button class="type-pill-btn" data-type="collab">Collab</button>
+        <button class="type-pill-btn" data-type="resource">Resource</button>
+      </div>
+
+      <form class="modal-form-content" id="composerMainForm">
+        <div class="form-row">
+          <label>Community</label>
+          <select id="composerTargetComm" class="form-control" required>
+            <option value="Software Architecture & Design Patterns">Software Architecture (Academic)</option>
+            <option value="Final Year Capstone 2026 Hub">Capstone 2026 Hub (Project)</option>
+            <option value="Mobile & Flutter Devs">Mobile & Flutter Devs (Interest)</option>
+            <option value="Superior University Official">Superior Official (Campus)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Title</label>
+          <input type="text" id="composerPostTitle" class="form-control" placeholder="What is this about?" required>
+        </div>
+
+        <div class="collab-extra-fields hidden" id="composerCollabGroup">
+          <div class="form-row">
+            <label>Teammates Needed</label>
+            <input type="number" id="collabTeammates" class="form-control" min="1" max="5" value="2">
+          </div>
+          <div class="form-row">
+            <label>Skills (comma separated)</label>
+            <input type="text" id="collabSkillsInput" class="form-control" placeholder="Flutter, Dart, Firebase">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Details</label>
+          <textarea id="composerPostContent" class="form-control" rows="3" placeholder="Provide clear context..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn full">Publish</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Community Modal -->
+  <div class="modal-backdrop-overlay hidden" id="communityModal">
+    <div class="modal-card-box">
+      <div class="modal-header-bar">
+        <span class="preview-badge" id="modalCommBadge">Academic</span>
+        <button class="close-modal-icon-btn" id="btnCloseCommunityModal">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <h3 id="modalCommTitle">Software Architecture</h3>
+      <p id="modalCommDesc" class="modal-desc">Clean architecture and system design patterns.</p>
+      
+      <div class="rules-box">
+        <h5>Guidelines</h5>
+        <ul id="modalCommRules"></ul>
+      </div>
+
+      <button class="submit-btn full" id="btnExecuteJoinModal">
+        <span id="modalJoinBtnLabel">Join Community</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Opportunity Modal -->
+  <div class="modal-backdrop-overlay hidden" id="opportunityModal">
+    <div class="modal-card-box">
+      <div class="modal-header-bar">
+        <span class="verified-chip">Verified Partner</span>
+        <button class="close-modal-icon-btn" id="btnCloseOppModal">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <h3 id="modalOppRole">Software Engineering Intern</h3>
+      <span class="company-sub" id="modalOppCompany">Systems Limited • Lahore</span>
+
+      <div class="opp-quick-tags">
+        <span class="tag-pill salary" id="modalOppStipend">PKR 45,000 / mo</span>
+        <span class="tag-pill" id="modalOppDuration">3 Months</span>
+        <span class="tag-pill alert" id="modalOppExpiry">6 Days Left</span>
+      </div>
+
+      <p id="modalOppDesc" class="modal-desc">Work with enterprise engineering teams on cloud microservices.</p>
+
+      <form id="formOppApplyModal">
+        <div class="form-row">
+          <label>Quick Note</label>
+          <textarea class="form-control" id="inputOppCover" rows="2" placeholder="Brief statement..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn full">Apply with Verified Profile</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Report Modal -->
+  <div class="modal-backdrop-overlay hidden" id="reportModal">
+    <div class="modal-card-box">
+      <div class="modal-header-bar">
+        <h3>Report Content</h3>
+        <button class="close-modal-icon-btn" id="btnCloseReportModal">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <form id="formSubmitReport">
+        <div class="reasons-list">
+          <label class="reason-row">
+            <input type="radio" name="reportReason" value="harassment" checked>
+            <span>Harassment or Discrimination</span>
+          </label>
+          <label class="reason-row">
+            <input type="radio" name="reportReason" value="scam">
+            <span>Fake Opportunity or Scam</span>
+          </label>
+          <label class="reason-row">
+            <input type="radio" name="reportReason" value="spam">
+            <span>Commercial Spam</span>
+          </label>
+        </div>
+        <button type="submit" class="submit-btn danger full">Submit Report</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- OTP Modal -->
+  <div class="modal-backdrop-overlay hidden" id="verifyDomainModal">
+    <div class="modal-card-box">
+      <div class="modal-header-bar">
+        <h3>Verify Email</h3>
+        <button class="close-modal-icon-btn" id="btnCloseVerifyModal">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <p class="modal-desc">Enter the 6-digit code sent to your student inbox.</p>
+      <div class="otp-inputs-grid">
+        <input type="text" maxlength="1" value="7" class="otp-cell">
+        <input type="text" maxlength="1" value="2" class="otp-cell">
+        <input type="text" maxlength="1" value="9" class="otp-cell">
+        <input type="text" maxlength="1" value="4" class="otp-cell">
+        <input type="text" maxlength="1" value="1" class="otp-cell">
+        <input type="text" maxlength="1" value="8" class="otp-cell">
+      </div>
+      <button class="submit-btn full" id="btnConfirmOtpModal">Confirm</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-popup" id="toastPopup">
+    <span id="toastPopupMessage">Done</span>
+  </div>
+
+  <script src="app-v2.js"></script>
+</body>
+</html>

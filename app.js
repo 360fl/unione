@@ -348,6 +348,16 @@ document.addEventListener('DOMContentLoaded', () => {
   function switchTab(tabKey) {
     state.activeTab = tabKey;
 
+    // Close global search overlay if open
+    const headerSearchBar = document.getElementById('headerSearchBar');
+    const searchQuickDropdown = document.getElementById('searchQuickDropdown');
+    const globalSearchInput = document.getElementById('globalSearchInput');
+    if (headerSearchBar && !headerSearchBar.classList.contains('hidden')) {
+      headerSearchBar.classList.add('hidden');
+      if (searchQuickDropdown) searchQuickDropdown.classList.add('hidden');
+      if (globalSearchInput) globalSearchInput.value = '';
+    }
+
     // Update bottom tab active styles
     footerTabs.forEach(tab => {
       if (tab.dataset.tab === tabKey) {
@@ -356,6 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
         tab.classList.remove('active');
       }
     });
+
+    // If switching to messages, ensure we show the conversation list inbox
+    if (tabKey === 'messages') {
+      const chatListView = document.getElementById('chatListView');
+      const chatActiveStage = document.getElementById('chatActiveStage');
+      if (chatListView && chatActiveStage) {
+        chatActiveStage.classList.add('hidden');
+        chatListView.classList.remove('hidden');
+      }
+    }
 
     // Toggle main viewport pane
     Object.keys(tabPanes).forEach(k => {
@@ -1020,13 +1040,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCloseVerifyModal = document.getElementById('btnCloseVerifyModal');
   const btnConfirmOtpModal = document.getElementById('btnConfirmOtpModal');
 
-  btnVerifyDomainHeader.addEventListener('click', () => verifyDomainModal.classList.remove('hidden'));
-  btnCloseVerifyModal.addEventListener('click', () => verifyDomainModal.classList.add('hidden'));
-  btnConfirmOtpModal.addEventListener('click', () => {
-    verifyDomainModal.classList.add('hidden');
-    showToast('Verified: su92-bssem-f24-296');
-    runSplash();
-  });
+  if (btnVerifyDomainHeader) {
+    btnVerifyDomainHeader.addEventListener('click', () => verifyDomainModal.classList.remove('hidden'));
+  }
+  if (btnCloseVerifyModal) {
+    btnCloseVerifyModal.addEventListener('click', () => verifyDomainModal.classList.add('hidden'));
+  }
+  if (btnConfirmOtpModal) {
+    btnConfirmOtpModal.addEventListener('click', () => {
+      verifyDomainModal.classList.add('hidden');
+      showToast('Verified: su92-bssem-f24-296');
+      runSplash();
+    });
+  }
+
+  // Also allow clicking verified badge or roll number in profile to test verification OTP modal
+  const profileRollTag = document.querySelector('.roll-number-tag');
+  if (profileRollTag) {
+    profileRollTag.style.cursor = 'pointer';
+    profileRollTag.title = 'Click to re-verify student domain';
+    profileRollTag.addEventListener('click', () => {
+      verifyDomainModal.classList.remove('hidden');
+    });
+  }
 
   // Report Modal
   const btnCloseReportModal = document.getElementById('btnCloseReportModal');

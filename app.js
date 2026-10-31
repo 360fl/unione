@@ -26,15 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         id: 'post-1',
         type: 'discussion',
-        author: 'Sohaib Ammar',
-        initials: 'SA',
-        community: 'Software Architecture',
-        timeAgo: '25m ago',
-        timestamp: Date.now() - 25 * 60 * 1000,
-        title: 'Event Outbox Pattern for Chat Reliability',
-        content: 'PostgreSQL outbox tables ensure guaranteed message delivery before websocket fanout under network drops.',
-        votes: 42,
-        hasUpvoted: false
+        author: 'Superior Campus Office',
+        initials: 'SO',
+        community: 'Campus Events',
+        timeAgo: '15m ago',
+        timestamp: Date.now() - 15 * 60 * 1000,
+        title: 'Annual Tech Summit & Capstone Demo Day 2026',
+        content: 'Industry jury panels from Systems Limited, Arbisoft, and Devsinc on campus. Final project submissions close this week.',
+        image: 'img_tech_summit.svg',
+        votes: 118,
+        hasUpvoted: true
       },
       {
         id: 'post-2',
@@ -48,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         content: 'Hardware funded by campus lab. Looking for a teammate with Figma and mobile layout experience.',
         collabCapacity: '2 of 4 filled',
         skills: ['Flutter', 'Figma', 'MQTT'],
-        votes: 35,
+        image: 'img_iot_project.svg',
+        votes: 42,
         hasUpvoted: true
       },
       {
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Drift SQLite Local Caching in Flutter',
         content: 'Generating typed reactive streams so feeds stay readable even when offline.',
         votes: 56,
-        hasUpvoted: true
+        hasUpvoted: false
       }
     ],
 
@@ -404,6 +406,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('article');
       card.className = 'clean-card';
 
+      let imageHTML = '';
+      if (post.image) {
+        imageHTML = `<img src="${post.image}" alt="${escapeHtml(post.title)}" class="post-embedded-img">`;
+      }
+
       let extraHTML = '';
       if (post.type === 'collab' && post.skills) {
         const skills = post.skills.map(s => `<span class="tag-badge">${s}</span>`).join('');
@@ -422,6 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <h3>${escapeHtml(post.title)}</h3>
         <p>${escapeHtml(post.content)}</p>
+        ${imageHTML}
         ${extraHTML}
         <div class="card-bottom-bar">
           <button class="upvote-chip ${post.hasUpvoted ? 'upvoted' : ''}" data-post-id="${post.id}">

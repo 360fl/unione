@@ -1337,3 +1337,16 @@ input:checked + .slider:before {
 .hidden {
   display: none !important;
 }
+
+
+/* Embedded Post Image */
+.post-embedded-img {
+  width: 100%;
+  height: auto;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin: 8px 0 10px 0;
+  display: block;
+  border: 1px solid var(--color-border);
+}

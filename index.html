@@ -3,1027 +3,498 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>UniOne — Student Collaboration, Community Networking & Career Platform</title>
-  <meta name="description" content="Superior University's verified academic collaboration and career discovery ecosystem.">
+  <title>UniOne</title>
+  <meta name="description" content="Verified student collaboration and career discovery network.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="unione-app-body">
 
   <!-- ========================================== -->
-  <!-- 0. BRAND SPLASH SCREEN (Animates on load) -->
+  <!-- 0. CLEAN SPLASH SCREEN                    -->
   <!-- ========================================== -->
   <div class="splash-screen" id="splashScreen">
-    <div class="splash-particles">
-      <span class="particle p1"></span>
-      <span class="particle p2"></span>
-      <span class="particle p3"></span>
-    </div>
-
     <div class="splash-content">
       <div class="splash-logo-container">
         <div class="logo-glow-ring"></div>
-        <div class="logo-svg-wrapper" id="splashLogo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 240" class="brand-svg-mark">
-            <defs>
-              <linearGradient id="splash-grad-forest" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#1B3E2B" />
-                <stop offset="100%" stop-color="#0F2418" />
-              </linearGradient>
-              <linearGradient id="splash-grad-sage" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#5E7D53" />
-                <stop offset="100%" stop-color="#41573A" />
-              </linearGradient>
-              <linearGradient id="splash-grad-leaf" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#9DB568" />
-                <stop offset="100%" stop-color="#768F4C" />
-              </linearGradient>
-            </defs>
-            <path class="splash-path u-curve" d="M 35,117 L 28,128 L 27,171 L 30,188 L 40,206 L 59,221 L 81,227 L 103,225 L 124,214 L 134,203 L 142,186 L 143,151 L 109,164 L 105,185 L 100,190 L 91,191 L 84,186 L 82,181 L 82,129 L 78,120 L 72,115 L 62,112 L 48,112 Z" fill="url(#splash-grad-forest)" />
-            <path class="splash-path right-stem" d="M 195,82 L 122,117 L 111,128 L 108,137 L 108,157 L 150,142 L 150,173 L 146,192 L 139,205 L 125,219 L 115,225 L 116,227 L 135,226 L 155,220 L 175,208 L 188,192 L 196,169 Z" fill="url(#splash-grad-sage)" />
-            <path class="splash-path dot" d="M 52,55 L 42,59 L 33,67 L 29,77 L 29,88 L 33,97 L 40,104 L 48,108 L 60,109 L 72,105 L 81,97 L 86,87 L 86,75 L 81,65 L 73,58 L 65,55 Z" fill="url(#splash-grad-forest)" />
-            <path class="splash-path leaf" d="M 202,18 L 192,19 L 173,27 L 164,33 L 153,44 L 144,59 L 141,69 L 140,99 L 145,98 L 176,84 L 182,80 L 193,69 L 198,60 L 202,46 L 202,35 L 203,34 L 203,19 Z" fill="url(#splash-grad-leaf)" />
-          </svg>
-        </div>
+        <img src="logo_clean.png" alt="UniOne" class="splash-brand-logo" width="80" height="90">
       </div>
-
-      <div class="splash-typography">
-        <h1 class="splash-title">Uni<span>One</span></h1>
-        <p class="splash-tagline">Student Collaboration, Community Networking & Career Discovery</p>
-        <div class="splash-badge-sub">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5.5-3.8 10.7-8 12-4.2-1.3-8-6.5-8-12V6l8-4z"/></svg>
-          <span>Superior University Verified Network • SRS v1.0</span>
-        </div>
-      </div>
-
+      <h1 class="splash-title">Uni<span>One</span></h1>
+      <p class="splash-tagline">Superior Verified Network</p>
       <div class="splash-loader-area">
         <div class="splash-progress-track">
           <div class="splash-progress-bar" id="splashProgressBar"></div>
         </div>
-        <span class="splash-loading-text" id="splashStatusText">Connecting to academic registry...</span>
       </div>
     </div>
   </div>
 
   <!-- ========================================== -->
-  <!-- TOP UNIVERSAL HEADER BAR (Fluid & Responsive) -->
+  <!-- TOP HEADER (Logo Centered & Minimal Text)  -->
   <!-- ========================================== -->
-  <header class="unione-top-navbar" id="topNavbar">
-    <div class="nav-left-brand">
-      <button class="mobile-menu-toggle" id="btnToggleSidebar" aria-label="Toggle Navigation">
-        <svg class="svg-icon" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  <header class="app-top-header" id="topNavbar">
+    <!-- Left Action -->
+    <div class="header-left">
+      <button class="header-action-btn" id="btnToggleSearch" title="Search">
+        <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
       </button>
-
-      <div class="brand-link" id="brandLogoTrigger">
-        <div class="brand-logo-frame">
-          <img src="logo_clean.png" alt="UniOne Logo" width="28" height="32" class="brand-img">
-        </div>
-        <div class="brand-titles">
-          <div class="brand-name-row">
-            <span class="brand-name">Uni<span class="brand-highlight">One</span></span>
-            <span class="brand-tag-beta">Superior SE</span>
-          </div>
-          <span class="brand-org">Academic & Career Ecosystem</span>
-        </div>
-      </div>
+      <button class="header-action-btn" id="btnVerifyDomainHeader" title="Verify Email">
+        <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </button>
     </div>
 
-    <!-- Center Universal Search Bar with Live Suggestions -->
-    <div class="nav-center-search">
-      <div class="search-input-shell">
-        <svg class="svg-icon search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="text" id="globalSearchInput" placeholder="Search discussions, communities, verified peers or opportunities..." autocomplete="off">
-        <kbd class="search-kbd-hint">/</kbd>
+    <!-- CENTER: Brand Logo & Title (Prominently Centered) -->
+    <div class="header-center-brand" id="brandLogoTrigger">
+      <div class="center-logo-wrap">
+        <img src="logo_clean.png" alt="UniOne Logo" width="30" height="34" class="center-brand-img">
       </div>
-      <!-- Live Dropdown Results Container -->
-      <div class="search-quick-dropdown hidden" id="searchQuickDropdown"></div>
+      <span class="center-brand-name">Uni<span class="green-highlight">One</span></span>
     </div>
 
-    <!-- Right Actions: Composer, Notifications, Live State & Profile -->
-    <div class="nav-right-actions">
-      <button class="action-btn-primary" id="btnHeaderNewPost">
-        <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-        <span class="btn-text">Create Post</span>
+    <!-- Right Action -->
+    <div class="header-right">
+      <button class="header-action-btn has-dot" id="btnNotificationsToggle" title="Notifications">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        <span class="notif-badge-dot" id="notifUnreadBadge">3</span>
       </button>
 
-      <!-- Replay Splash Sequence -->
-      <button class="icon-round-btn" id="btnReplaySplashHeader" title="Replay App Launch Experience">
-        <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+      <button class="header-profile-avatar" id="btnOpenProfileHeader" title="Profile">
+        <span>AH</span>
       </button>
+    </div>
 
-      <!-- Verification / OTP Flow Preview -->
-      <button class="icon-round-btn" id="btnVerifyDomainHeader" title="Verify University Email & Domain">
-        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+    <!-- Live Search Overlay -->
+    <div class="header-search-bar hidden" id="headerSearchBar">
+      <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="globalSearchInput" placeholder="Search discussions, peers, jobs..." autocomplete="off">
+      <button class="close-search-btn" id="btnCloseSearch">
+        <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
+      <div class="search-results-dropdown hidden" id="searchQuickDropdown"></div>
+    </div>
 
-      <!-- Notifications Dropdown Trigger -->
-      <div class="popover-wrapper">
-        <button class="icon-round-btn has-dot" id="btnNotificationsToggle" title="Notifications">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
-          <span class="unread-dot" id="notifUnreadBadge">3</span>
-        </button>
-
-        <div class="popover-dropdown notifications-panel hidden" id="notificationsDropdown">
-          <div class="dropdown-header">
-            <h4>Campus Notifications</h4>
-            <button class="text-action-link" id="btnMarkAllNotifsRead">Mark read</button>
-          </div>
-          <div class="notifications-scroll" id="notificationsList">
-            <!-- Dynamically populated from demo data -->
-          </div>
-        </div>
+    <!-- Notifications Popover -->
+    <div class="popover-dropdown notifications-panel hidden" id="notificationsDropdown">
+      <div class="dropdown-header">
+        <h4>Notifications</h4>
+        <button class="text-link-btn" id="btnMarkAllNotifsRead">Clear</button>
       </div>
-
-      <!-- User Profile Header Summary -->
-      <div class="header-profile-badge" id="btnOpenProfileHeader">
-        <div class="profile-avatar-pill">AH</div>
-        <div class="profile-meta-text">
-          <span class="user-display-name">Ali Haroon</span>
-          <span class="user-role-badge">Verified SE</span>
-        </div>
-      </div>
+      <div class="notifications-scroll" id="notificationsList"></div>
     </div>
   </header>
 
   <!-- ========================================== -->
-  <!-- MAIN APP WORKSPACE (Responsive Multi-Column) -->
+  <!-- MAIN APP CONTAINER                         -->
   <!-- ========================================== -->
-  <div class="app-workspace-layout">
-    
+  <main class="app-main-viewport" id="mainContainer">
+
     <!-- ---------------------------------------- -->
-    <!-- LEFT NAVIGATION SIDEBAR (Collapsible on mobile) -->
+    <!-- TAB 1: FEED (Minimal, Clean Posts)      -->
     <!-- ---------------------------------------- -->
-    <aside class="app-navigation-sidebar" id="appSidebar">
-      <!-- Verified Student Mini Badge Card -->
-      <div class="sidebar-student-card">
-        <div class="student-avatar-ring">
-          <span class="student-initials">AH</span>
-          <span class="verified-icon-check" title="Verified University Student">
+    <section class="tab-pane active" id="pane-feed">
+      <!-- Minimal Composer Bar -->
+      <div class="feed-composer-bar" id="triggerComposerBox">
+        <div class="composer-user-avatar">AH</div>
+        <div class="composer-placeholder">Share a question, collab, or resource...</div>
+        <button class="composer-add-btn">
+          <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+      </div>
+
+      <!-- Filter Chips Row -->
+      <div class="feed-filters-strip">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="discussion">Discussions</button>
+        <button class="filter-pill" data-filter="collab">Collabs</button>
+        <button class="filter-pill" data-filter="resource">Resources</button>
+        <button class="filter-pill sort-pill" id="btnToggleSort">
+          <span id="currentSortLabel">Best</span>
+        </button>
+      </div>
+
+      <!-- Feed Stream -->
+      <div class="feed-posts-stream" id="postsFeedContainer"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 2: COMMUNITIES                      -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-communities">
+      <div class="minimal-page-header">
+        <h2>Communities</h2>
+        <span class="sub-counter">7 Campus Hubs</span>
+      </div>
+
+      <div class="category-pills-row">
+        <button class="cat-pill active" data-comm-filter="all">All</button>
+        <button class="cat-pill" data-comm-filter="academic">Study</button>
+        <button class="cat-pill" data-comm-filter="project">Projects</button>
+        <button class="cat-pill" data-comm-filter="career">Careers</button>
+        <button class="cat-pill" data-comm-filter="interest">Interest</button>
+      </div>
+
+      <div class="communities-cards-list" id="communitiesGrid"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 3: COLLABS (Team Recruitment)       -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-collab">
+      <div class="minimal-page-header">
+        <h2>Collaboration</h2>
+        <button class="mini-action-pill" id="btnPostCollabHero">+ Post Request</button>
+      </div>
+
+      <div class="collab-cards-list" id="collabDirectoryGrid"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 4: CAREERS (Verified Jobs)          -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-opportunities">
+      <div class="minimal-page-header">
+        <h2>Career Board</h2>
+        <span class="verified-tag-indicator">Verified Employers</span>
+      </div>
+
+      <div class="category-pills-row">
+        <button class="opp-filter-pill active" data-opp-type="all">All</button>
+        <button class="opp-filter-pill" data-opp-type="internship">Internships</button>
+        <button class="opp-filter-pill" data-opp-type="graduate">Jobs</button>
+        <button class="opp-filter-pill" data-opp-type="research">Grants</button>
+      </div>
+
+      <div class="opportunities-cards-list" id="opportunitiesContainer"></div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 5: MESSAGES (Chat & Requests)       -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-messages">
+      <!-- Conversation Stage View (Clean Mobile-Native) -->
+      <div class="chat-wrapper" id="chatWrapper">
+        <!-- Conversations List Subview -->
+        <div class="chat-list-view" id="chatListView">
+          <div class="chat-tabs-switch">
+            <button class="chat-tab-btn active" id="btnSwitchDirectChat">
+              <span>Chats</span>
+              <span class="counter-dot" id="chatActiveCount">4</span>
+            </button>
+            <button class="chat-tab-btn" id="btnSwitchRequestsChat">
+              <span>Requests</span>
+              <span class="counter-dot alert" id="chatRequestsCount">2</span>
+            </button>
+          </div>
+
+          <div class="conversations-scroll-box" id="convsList"></div>
+          <div class="requests-scroll-box hidden" id="reqsList"></div>
+        </div>
+
+        <!-- Active Chat Room Subview -->
+        <div class="chat-active-view hidden" id="chatActiveStage">
+          <header class="active-chat-bar">
+            <button class="chat-back-btn" id="btnBackToChatList">
+              <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="chat-user-meta">
+              <div class="chat-user-avatar" id="activeChatAvatar">SA</div>
+              <div class="chat-user-names">
+                <strong id="activeChatName">Sohaib Ammar</strong>
+                <span id="activeChatSub">Online</span>
+              </div>
+            </div>
+            <button class="chat-flag-btn" id="btnReportChatUser" title="Report">
+              <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+            </button>
+          </header>
+
+          <div class="chat-bubbles-scroll" id="activeChatMessagesScroll"></div>
+
+          <div class="chat-typing-row hidden" id="chatTypingRow">
+            <span id="chatTypingName">Sohaib</span> is typing...
+          </div>
+
+          <form class="chat-bottom-input-bar" id="activeChatSendForm">
+            <input type="text" id="inputChatMessageText" placeholder="Write a message..." autocomplete="off">
+            <button type="submit" class="chat-send-icon-btn">
+              <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------------------------------------- -->
+    <!-- TAB 6: PROFILE (Accessible via Avatar)   -->
+    <!-- ---------------------------------------- -->
+    <section class="tab-pane" id="pane-profile">
+      <div class="profile-card">
+        <div class="profile-header-strip"></div>
+        <div class="profile-avatar-wrap">
+          <div class="profile-img-avatar">AH</div>
+          <span class="verified-badge-pill">
             <svg class="svg-icon mini" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </span>
         </div>
-        <div class="student-info">
-          <h4>Ali Haroon</h4>
-          <span class="student-id-code">SU92-BSSEM-F24-296</span>
-          <span class="student-dept">Superior University • BS SE</span>
+
+        <div class="profile-info-block">
+          <h3>Ali Haroon</h3>
+          <span class="roll-number-tag">SU92-BSSEM-F24-296</span>
+          <p class="profile-dept">BS Software Engineering • Superior University</p>
+          <p class="profile-bio-snippet">Full-stack & Flutter developer building verified university networks.</p>
+        </div>
+
+        <div class="profile-stats-row">
+          <div class="stat-cell">
+            <strong>18</strong>
+            <span>Posts</span>
+          </div>
+          <div class="stat-cell">
+            <strong>6</strong>
+            <span>Hubs</span>
+          </div>
+          <div class="stat-cell">
+            <strong>3</strong>
+            <span>Projects</span>
+          </div>
+        </div>
+
+        <div class="profile-section-block">
+          <h4>Verified Skills</h4>
+          <div class="skills-chips-row">
+            <span class="skill-tag">Flutter & Dart</span>
+            <span class="skill-tag">NestJS / Node</span>
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Drift SQLite</span>
+          </div>
+        </div>
+
+        <div class="profile-section-block">
+          <h4>Settings</h4>
+          <div class="setting-toggle-row">
+            <span>Show Roll Number</span>
+            <label class="switch">
+              <input type="checkbox" checked id="toggleRollVisibility">
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Main Navigation Links -->
-      <nav class="sidebar-nav-menu">
-        <div class="nav-section-label">PLATFORM NAVIGATION</div>
-
-        <button class="nav-menu-item active" data-tab="feed">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          <span>Discussions & Feed</span>
-          <span class="menu-badge hot">Live</span>
-        </button>
-
-        <button class="nav-menu-item" data-tab="communities">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-          <span>Communities</span>
-          <span class="menu-count">7 Types</span>
-        </button>
-
-        <button class="nav-menu-item" data-tab="collab">
-          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-          <span>Collab & Projects</span>
-          <span class="menu-badge">5 Open</span>
-        </button>
-
-        <button class="nav-menu-item" data-tab="opportunities">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-          <span>Career Board</span>
-          <span class="menu-badge verified">Verified</span>
-        </button>
-
-        <button class="nav-menu-item" data-tab="messages">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <span>Direct Messages</span>
-          <span class="menu-count unread-pill" id="sidebarMsgUnreadCount">3</span>
-        </button>
-
-        <button class="nav-menu-item" data-tab="workspace">
-          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          <span>Active Workspace</span>
-          <span class="menu-badge active-pill">Capstones</span>
-        </button>
-
-        <button class="nav-menu-item" data-tab="profile">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-          <span>Academic Profile</span>
-        </button>
-      </nav>
-
-      <!-- Quick Communities Shortlist -->
-      <div class="sidebar-communities-section">
-        <div class="nav-section-label">PINNED COMMUNITIES</div>
-        <div class="pinned-comm-list" id="sidebarPinnedComm">
-          <!-- Dynamically populated -->
-        </div>
-      </div>
-
-      <!-- Quick Stats Footer -->
-      <div class="sidebar-status-footer">
-        <div class="status-indicator-pill">
-          <span class="live-dot"></span>
-          <span>Postgres Outbox & Drift Synced</span>
-        </div>
-      </div>
-    </aside>
-
-    <!-- ---------------------------------------- -->
-    <!-- CENTER CONTENT STAGE (Dynamic Views)     -->
-    <!-- ---------------------------------------- -->
-    <main class="app-main-content" id="appMainStage">
-
-      <!-- ======================================== -->
-      <!-- TAB 1: DISCUSSIONS & FEED (SRS 3.4)     -->
-      <!-- ======================================== -->
-      <section class="content-view-pane active" id="pane-feed">
-        <!-- Campus Official Announcement Banner (SRS FR-08, FR-14) -->
-        <article class="campus-broadcast-banner">
-          <div class="broadcast-tag">
-            <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M22 17H2a3 3 0 0 0 3-3V9a7 7 0 0 1 14 0v5a3 3 0 0 0 3 3zm-8.27 4a2 2 0 0 1-3.46 0"/></svg>
-            <span>OFFICIAL CAMPUS BROADCAST • SUPERIOR UNIVERSITY</span>
-          </div>
-          <div class="broadcast-body">
-            <h3>Annual Tech Summit & Capstone Demo Day 2026: Team Registrations Open</h3>
-            <p>Jury panels from Systems Limited, Arbisoft, and Devsinc will be evaluating capstone final prototypes on campus. Ensure your team workspace and SRS deliverable links are submitted before Friday 5:00 PM.</p>
-          </div>
-          <div class="broadcast-footer">
-            <span class="broadcast-source">Office of Academic & Research Affairs</span>
-            <span class="broadcast-time">Published 2 hours ago</span>
-          </div>
-        </article>
-
-        <!-- Quick Post Trigger Box -->
-        <div class="quick-composer-box" id="triggerComposerBox">
-          <div class="quick-avatar">AH</div>
-          <div class="quick-input-placeholder">
-            <span>What academic challenge or project are you collaborating on, Ali?</span>
-          </div>
-          <button class="quick-post-btn" id="btnQuickPostAction">
-            <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Post</span>
-          </button>
-        </div>
-
-        <!-- Filter Subbar: Type Chips & Sort Toggle (SRS FR-16: New/Best sorting) -->
-        <div class="feed-controls-subbar">
-          <div class="filter-pills-row">
-            <button class="filter-pill active" data-filter="all">All Feeds (8)</button>
-            <button class="filter-pill" data-filter="discussion">Discussions</button>
-            <button class="filter-pill" data-filter="collab">Collab Requests</button>
-            <button class="filter-pill" data-filter="resource">Study Resources</button>
-            <button class="filter-pill" data-filter="announcement">Official Notices</button>
-          </div>
-
-          <div class="sort-action-group">
-            <span class="sort-hint-label">Sort:</span>
-            <button class="sort-dropdown-btn" id="btnToggleSort">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M3 6h18M6 12h12m-9 6h6"/></svg>
-              <strong id="currentSortLabel">Best (Highest Upvotes)</strong>
-            </button>
-          </div>
-        </div>
-
-        <!-- Main Stream Cards Container -->
-        <div class="posts-feed-stream" id="postsFeedContainer">
-          <!-- Populated from rich demo data via app.js -->
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- TAB 2: COMMUNITIES (7 MVP TYPES - SRS 3.3)-->
-      <!-- ======================================== -->
-      <section class="content-view-pane" id="pane-communities">
-        <div class="section-hero-header">
-          <div class="hero-text-block">
-            <h2>Campus Communities</h2>
-            <p>Explore 7 verified community tiers structured according to UniOne SRS Section 3.3. Join academic hubs, project workspaces, and faculty channels.</p>
-          </div>
-          <button class="action-btn-primary" id="btnCreateCommunityTrigger">
-            <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-            <span>Create Community</span>
-          </button>
-        </div>
-
-        <!-- 7 Types Filter Tabs -->
-        <div class="community-categories-bar">
-          <button class="cat-chip active" data-comm-filter="all">All Tiers (7)</button>
-          <button class="cat-chip" data-comm-filter="institutional">Institutional</button>
-          <button class="cat-chip" data-comm-filter="academic">Academic & Study</button>
-          <button class="cat-chip" data-comm-filter="project">Project Work</button>
-          <button class="cat-chip" data-comm-filter="career">Careers & Placement</button>
-          <button class="cat-chip" data-comm-filter="interest">Open Interest</button>
-          <button class="cat-chip" data-comm-filter="private">Private Groups</button>
-        </div>
-
-        <div class="communities-cards-grid" id="communitiesGrid">
-          <!-- Populated via JS -->
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- TAB 3: COLLABS & PROJECTS (SRS 3.5)     -->
-      <!-- ======================================== -->
-      <section class="content-view-pane" id="pane-collab">
-        <div class="section-hero-header banner-style">
-          <div class="hero-text-block">
-            <div class="hero-subbadge">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-              <span>STUDENT TEAM RECRUITMENT & CAPSTONE DISCOVERY</span>
-            </div>
-            <h2>Recruit Peer Teammates with Verified Skills</h2>
-            <p>Looking for a Flutter developer, backend engineer, or UI/UX designer for your semester project or national hackathon? Post structured requests with transparent capacity and deadlines.</p>
-          </div>
-          <div class="hero-actions-row">
-            <button class="action-btn-primary" id="btnPostCollabHero">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-              <span>Post Collab Request</span>
-            </button>
-            <button class="action-btn-secondary" id="btnGoToWorkspaceHero">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline></svg>
-              <span>Open My Team Workspace</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="collab-items-grid" id="collabDirectoryGrid">
-          <!-- Populated via JS -->
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- TAB 4: CAREER BOARD (SRS 3.7)           -->
-      <!-- ======================================== -->
-      <section class="content-view-pane" id="pane-opportunities">
-        <div class="section-hero-header">
-          <div class="hero-text-block">
-            <div class="verified-gate-pill">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-              <span>VERIFIED CORPORATE PARTNERS ONLY • AUTO-EXPIRES IN 14 DAYS</span>
-            </div>
-            <h2>Superior Career & Internship Discovery</h2>
-            <p>Direct recruitment postings strictly vetted by Superior Career Office. No unpaid traps or unverified entities. Apply seamlessly with your verified university credentials.</p>
-          </div>
-        </div>
-
-        <div class="opportunities-filter-strip">
-          <div class="opp-type-filters">
-            <button class="opp-filter-btn active" data-opp-type="all">All Opportunities (5)</button>
-            <button class="opp-filter-btn" data-opp-type="internship">Paid Internships</button>
-            <button class="opp-filter-btn" data-opp-type="graduate">Graduate Roles</button>
-            <button class="opp-filter-btn" data-opp-type="research">Research Grants</button>
-          </div>
-          <span class="opp-stats-text" id="oppCountIndicator">Showing 5 vetted opportunities</span>
-        </div>
-
-        <div class="opportunities-cards-container" id="opportunitiesContainer">
-          <!-- Populated via JS -->
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- TAB 5: DIRECT MESSAGES & CHAT (SRS 3.6) -->
-      <!-- ======================================== -->
-      <section class="content-view-pane" id="pane-messages">
-        <div class="chat-system-layout">
-          <!-- Chat Sidebar: Conversation List & Requests -->
-          <div class="chat-sidebar-column">
-            <div class="chat-nav-switch">
-              <button class="chat-switch-btn active" id="btnSwitchDirectChat">
-                <span>Conversations</span>
-                <span class="chat-count-tag" id="chatActiveCount">4</span>
-              </button>
-              <button class="chat-switch-btn" id="btnSwitchRequestsChat">
-                <span>Requests</span>
-                <span class="chat-count-tag alert" id="chatRequestsCount">2</span>
-              </button>
-            </div>
-
-            <!-- Search Conversations -->
-            <div class="chat-search-input-shell">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-              <input type="text" placeholder="Filter conversations..." id="inputFilterConvs">
-            </div>
-
-            <!-- Conversations List -->
-            <div class="conversations-scroll-list" id="convsList">
-              <!-- Populated via JS -->
-            </div>
-
-            <!-- Requests List (hidden by default) -->
-            <div class="requests-scroll-list hidden" id="reqsList">
-              <!-- Populated via JS -->
-            </div>
-          </div>
-
-          <!-- Active Conversation Stage -->
-          <div class="chat-active-stage" id="chatActiveStage">
-            <header class="active-chat-header">
-              <div class="chat-target-meta">
-                <div class="chat-target-avatar" id="activeChatAvatar">SA</div>
-                <div class="chat-target-titles">
-                  <div class="chat-target-name-row">
-                    <h4 id="activeChatName">Sohaib Ammar</h4>
-                    <span class="chat-verified-badge" title="Verified Peer">
-                      <svg class="svg-icon mini" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </span>
-                  </div>
-                  <span class="chat-target-subtitle" id="activeChatSub">SU92-BSSEM-F24-339 • <span class="status-online-text">Online</span></span>
-                </div>
-              </div>
-              <div class="chat-header-actions">
-                <button class="icon-round-btn" id="btnReportChatUser" title="Report User to Safety">
-                  <svg class="svg-icon mini" viewBox="0 0 24 24"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                </button>
-              </div>
-            </header>
-
-            <!-- Message Stream -->
-            <div class="chat-messages-scroll" id="activeChatMessagesScroll">
-              <!-- Dynamically populated with chat bubbles -->
-            </div>
-
-            <!-- Typing indicator -->
-            <div class="chat-typing-status hidden" id="chatTypingRow">
-              <span id="chatTypingName">Sohaib</span> is typing
-              <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
-            </div>
-
-            <!-- Chat Composer -->
-            <form class="chat-send-form" id="activeChatSendForm">
-              <button type="button" class="chat-tool-btn" id="btnChatAttach" title="Attach Code/File">
-                <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
-              </button>
-              <input type="text" class="chat-message-input" id="inputChatMessageText" placeholder="Write a message to your peer..." autocomplete="off">
-              <button type="submit" class="chat-submit-btn" id="btnSubmitChatMessage" title="Send Message">
-                <svg class="svg-icon" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- TAB 6: PROJECT WORKSPACE (SRS 3.5 & FR-21)-->
-      <!-- ======================================== -->
-      <section class="content-view-pane" id="pane-workspace">
-        <div class="workspace-page-card">
-          <header class="workspace-hero-bar">
-            <div class="ws-hero-details">
-              <span class="ws-tag">CAPSTONE WORKSPACE #W-409</span>
-              <h3>UniOne Mobile Client (Flutter + Drift Engine)</h3>
-              <p>Senior Capstone Project • Supervisor: Dr. Zulfiqar Ahmad • Milestone: Sprint 2 Demo</p>
-            </div>
-            <div class="ws-team-avatars-stack">
-              <span class="stack-avatar" title="Ali Haroon (Project Lead)">AH</span>
-              <span class="stack-avatar" title="Sohaib Ammar (Backend Arch)">SA</span>
-              <span class="stack-avatar" title="Raheem Rizwan (BullMQ Queues)">RR</span>
-              <span class="stack-avatar" title="Faizan Asghar (UI/UX)">FA</span>
-              <span class="stack-more">+3</span>
-            </div>
-          </header>
-
-          <!-- Workspace Sub Navigation -->
-          <div class="workspace-sub-tabs">
-            <button class="ws-tab-btn active" data-ws-section="tasks">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
-              <span>Milestones & Tasks (5)</span>
-            </button>
-            <button class="ws-tab-btn" data-ws-section="roster">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-              <span>Team Roster (7 Verified)</span>
-            </button>
-            <button class="ws-tab-btn" data-ws-section="teamchat">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-              <span>Private Team Chat</span>
-            </button>
-          </div>
-
-          <!-- Section 1: Tasks & Progress -->
-          <div class="ws-section-body active" id="wsSectionTasks">
-            <div class="sprint-progress-card">
-              <div class="progress-info-row">
-                <strong>Sprint 2 Deliverable Completion Rate</strong>
-                <span id="wsProgressPercent">60% Completed (3 of 5)</span>
-              </div>
-              <div class="progress-bar-track">
-                <div class="progress-bar-fill" id="wsProgressBarFill" style="width: 60%;"></div>
-              </div>
-            </div>
-
-            <div class="tasks-checklist-container" id="wsTasksList">
-              <!-- Checkable task items with status changes -->
-            </div>
-          </div>
-
-          <!-- Section 2: Team Roster -->
-          <div class="ws-section-body" id="wsSectionRoster">
-            <div class="roster-cards-grid" id="wsRosterGrid">
-              <!-- Populated via JS with 7 student engineers from SRS -->
-            </div>
-          </div>
-
-          <!-- Section 3: Team Chat -->
-          <div class="ws-section-body" id="wsSectionTeamchat">
-            <div class="team-chat-standalone-card">
-              <div class="team-messages-scroll" id="wsTeamChatMessages">
-                <!-- Populated via JS -->
-              </div>
-              <form class="team-chat-send-row" id="formTeamChatSend">
-                <input type="text" id="inputTeamChatMessage" placeholder="Message the capstone team..." autocomplete="off">
-                <button type="submit" class="action-btn-primary">Send to Team</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ======================================== -->
-      <!-- TAB 7: ACADEMIC PROFILE (SRS 3.2)       -->
-      <!-- ======================================== -->
-      <section class="content-view-pane" id="pane-profile">
-        <div class="profile-page-wrapper">
-          <div class="profile-banner-hero">
-            <div class="banner-geometric-pattern"></div>
-            <button class="edit-profile-trigger" id="btnEditProfileTrigger">
-              <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-              <span>Edit Profile</span>
-            </button>
-          </div>
-
-          <div class="profile-hero-content">
-            <div class="profile-avatar-stack">
-              <div class="profile-large-avatar">AH</div>
-              <div class="profile-large-verified-badge" title="Verified Superior Student">
-                <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-            </div>
-
-            <div class="profile-headline-details">
-              <div class="profile-name-row">
-                <h2>Ali Haroon</h2>
-                <span class="roll-badge">SU92-BSSEM-F24-296</span>
-                <span class="status-available-badge">
-                  <span class="status-pulse-dot"></span>
-                  <span>Available for Capstone Collaboration</span>
-                </span>
-              </div>
-              <p class="profile-program-line">BS Software Engineering • Superior University Lahore</p>
-              <p class="profile-summary-text">Full-stack & Flutter engineer passionate about offline-first distributed systems, PostgreSQL transactional outbox design, and building real-world student platforms.</p>
-            </div>
-          </div>
-
-          <!-- Academic Metrics -->
-          <div class="profile-metrics-strip">
-            <div class="metric-block">
-              <span class="m-val">18</span>
-              <span class="m-lbl">Discussion Posts</span>
-            </div>
-            <div class="metric-block">
-              <span class="m-val">6</span>
-              <span class="m-lbl">Communities Joined</span>
-            </div>
-            <div class="metric-block">
-              <span class="m-val">3</span>
-              <span class="m-lbl">Active Projects</span>
-            </div>
-            <div class="metric-block">
-              <span class="m-val">3.82</span>
-              <span class="m-lbl">Verified CGPA</span>
-            </div>
-          </div>
-
-          <!-- Skills & Capstone Showcase -->
-          <div class="profile-grid-panels">
-            <div class="profile-panel-card">
-              <div class="panel-header">
-                <h4>Verified Technical Skills</h4>
-                <span class="panel-subtag">Peer Endorsed</span>
-              </div>
-              <div class="skills-cloud-pills">
-                <span class="skill-pill"><span class="pill-dot"></span>Flutter & Dart</span>
-                <span class="skill-pill"><span class="pill-dot"></span>NestJS & TypeScript</span>
-                <span class="skill-pill"><span class="pill-dot"></span>PostgreSQL (Outbox & FTS)</span>
-                <span class="skill-pill"><span class="pill-dot"></span>Drift SQLite Local Cache</span>
-                <span class="skill-pill"><span class="pill-dot"></span>Docker & Redis</span>
-                <span class="skill-pill"><span class="pill-dot"></span>UML 2.5 Software Modeling</span>
-              </div>
-            </div>
-
-            <div class="profile-panel-card">
-              <div class="panel-header">
-                <h4>Privacy & Visibility Controls (SRS FR-09)</h4>
-              </div>
-              <div class="privacy-control-row">
-                <div class="pc-text">
-                  <strong>Show Academic Roll Number</strong>
-                  <span>Allow verified students and professors to view academic credential</span>
-                </div>
-                <label class="switch">
-                  <input type="checkbox" checked id="toggleRollVisibility">
-                  <span class="slider round"></span>
-                </label>
-              </div>
-              <div class="privacy-control-row">
-                <div class="pc-text">
-                  <strong>Allow Peer Message Requests</strong>
-                  <span>Route non-connection messages to screened requests queue</span>
-                </div>
-                <label class="switch">
-                  <input type="checkbox" checked id="toggleMsgRequests">
-                  <span class="slider round"></span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- ---------------------------------------- -->
-    <!-- RIGHT COMPLEMENTARY SIDEBAR (Desktop/Large)-->
-    <!-- ---------------------------------------- -->
-    <aside class="app-right-sidebar">
-      <!-- Quick Active Project Card -->
-      <div class="side-card active-project-widget">
-        <div class="side-card-header">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline></svg>
-          <h4>Your Active Capstone</h4>
-        </div>
-        <h5>UniOne Mobile Client</h5>
-        <p>Flutter + NestJS Architecture • Sprint 2</p>
-        <div class="widget-progress">
-          <div class="wp-track"><div class="wp-fill" style="width: 60%;"></div></div>
-          <span>60% Deliverables Ready</span>
-        </div>
-        <button class="widget-action-btn" id="btnSideOpenWorkspace">Open Workspace</button>
-      </div>
-
-      <!-- Campus Events & Deadlines -->
-      <div class="side-card">
-        <div class="side-card-header">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-          <h4>Upcoming Campus Deadlines</h4>
-        </div>
-        <ul class="deadlines-list">
-          <li>
-            <span class="d-date">Nov 04</span>
-            <div class="d-info">
-              <strong>FYP SRS Documentation Defense</strong>
-              <span>Main Auditorium • 10:00 AM</span>
-            </div>
-          </li>
-          <li>
-            <span class="d-date">Nov 08</span>
-            <div class="d-info">
-              <strong>Systems Limited Internship Test</strong>
-              <span>Placement Cell Hall B</span>
-            </div>
-          </li>
-          <li>
-            <span class="d-date">Nov 15</span>
-            <div class="d-info">
-              <strong>Annual Hackathon Registration</strong>
-              <span>ORIC Innovation Hub</span>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Verified Career Spotlight -->
-      <div class="side-card career-spotlight-widget">
-        <div class="side-card-header">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <h4>Featured Opportunity</h4>
-        </div>
-        <span class="spotlight-badge">Systems Limited</span>
-        <h5>Software Engineering Intern</h5>
-        <span class="spotlight-salary">PKR 45,000 / month</span>
-        <p>Hybrid • 6 days left to apply</p>
-        <button class="widget-action-btn primary" id="btnSideApplyOpp">View & Apply</button>
-      </div>
-    </aside>
-
-  </div> <!-- /app-workspace-layout -->
+  </main>
 
   <!-- ========================================== -->
-  <!-- MODALS & SLIDE-OVER PANELS                 -->
+  <!-- PERFECT APP FOOTER (Bottom Navigation Bar) -->
+  <!-- ========================================== -->
+  <nav class="app-bottom-footer" id="appBottomFooter">
+    <button class="footer-nav-tab active" data-tab="feed">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      </div>
+      <span class="footer-label">Feed</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="communities">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <span class="footer-label">Hubs</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="collab">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+      </div>
+      <span class="footer-label">Collabs</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="opportunities">
+      <div class="footer-icon-shell">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      </div>
+      <span class="footer-label">Careers</span>
+    </button>
+
+    <button class="footer-nav-tab" data-tab="messages">
+      <div class="footer-icon-shell has-badge">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span class="footer-tab-badge" id="footerMsgBadge">4</span>
+      </div>
+      <span class="footer-label">Chat</span>
+    </button>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- MODALS (Clean & Compact)                   -->
   <!-- ========================================== -->
 
-  <!-- 1. POST COMPOSER MODAL (SRS 3.4 & FR-15) -->
+  <!-- Composer Modal -->
   <div class="modal-backdrop-overlay hidden" id="composerModal">
     <div class="modal-card-box">
       <div class="modal-header-bar">
-        <h3>Publish to Campus Network</h3>
+        <h3>Create Post</h3>
         <button class="close-modal-icon-btn" id="btnCloseComposer">
           <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <!-- Post Types Tabs -->
-      <div class="composer-type-pills">
-        <button class="type-pill-btn active" data-type="discussion">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-          <span>Discussion Post</span>
-        </button>
-        <button class="type-pill-btn" data-type="collab">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-          <span>Collab Request</span>
-        </button>
-        <button class="type-pill-btn" data-type="resource">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-          <span>Study Resource</span>
-        </button>
+      <div class="type-pills-selector">
+        <button class="type-pill-btn active" data-type="discussion">Discussion</button>
+        <button class="type-pill-btn" data-type="collab">Collab</button>
+        <button class="type-pill-btn" data-type="resource">Resource</button>
       </div>
 
       <form class="modal-form-content" id="composerMainForm">
-        <div class="form-control-row">
-          <label>Target Community</label>
-          <select id="composerTargetComm" class="form-input-element" required>
-            <option value="Software Architecture & Design Patterns">Software Architecture & Design Patterns (Academic)</option>
-            <option value="Final Year Capstone 2026 Hub">Final Year Capstone 2026 Hub (Project)</option>
-            <option value="Mobile & Flutter Devs">Mobile & Flutter Devs (Open Interest)</option>
-            <option value="Tech Careers & Placement Cell">Tech Careers & Placement Cell (Career)</option>
-            <option value="Superior University Official">Superior University Official (Institutional)</option>
+        <div class="form-row">
+          <label>Community</label>
+          <select id="composerTargetComm" class="form-control" required>
+            <option value="Software Architecture & Design Patterns">Software Architecture (Academic)</option>
+            <option value="Final Year Capstone 2026 Hub">Capstone 2026 Hub (Project)</option>
+            <option value="Mobile & Flutter Devs">Mobile & Flutter Devs (Interest)</option>
+            <option value="Superior University Official">Superior Official (Campus)</option>
           </select>
         </div>
 
-        <div class="form-control-row">
-          <label>Post Title</label>
-          <input type="text" id="composerPostTitle" class="form-input-element" placeholder="e.g. Best pattern for SQLite offline sync in Flutter?" required>
+        <div class="form-row">
+          <label>Title</label>
+          <input type="text" id="composerPostTitle" class="form-control" placeholder="What is this about?" required>
         </div>
 
-        <!-- Collab specific extra inputs -->
-        <div class="collab-dynamic-group hidden" id="composerCollabGroup">
-          <div class="form-cols-two">
-            <div class="form-control-row">
-              <label>Teammates Needed</label>
-              <input type="number" id="collabTeammates" class="form-input-element" min="1" max="6" value="2">
-            </div>
-            <div class="form-control-row">
-              <label>Expected Hours / Week</label>
-              <input type="text" id="collabHoursInput" class="form-input-element" placeholder="e.g. 10-15 hrs/wk">
-            </div>
+        <div class="collab-extra-fields hidden" id="composerCollabGroup">
+          <div class="form-row">
+            <label>Teammates Needed</label>
+            <input type="number" id="collabTeammates" class="form-control" min="1" max="5" value="2">
           </div>
-          <div class="form-control-row">
-            <label>Required Skills (comma separated)</label>
-            <input type="text" id="collabSkillsInput" class="form-input-element" placeholder="e.g. Flutter, Firebase, REST APIs">
+          <div class="form-row">
+            <label>Skills (comma separated)</label>
+            <input type="text" id="collabSkillsInput" class="form-control" placeholder="Flutter, Dart, Firebase">
           </div>
         </div>
 
-        <div class="form-control-row">
-          <label>Body Description & Context</label>
-          <textarea id="composerPostContent" class="form-input-element textarea" rows="4" placeholder="Detail your question, research findings or project requirements..." required></textarea>
+        <div class="form-row">
+          <label>Details</label>
+          <textarea id="composerPostContent" class="form-control" rows="3" placeholder="Provide clear context..." required></textarea>
         </div>
 
-        <div class="form-control-row">
-          <label>Optional Code Snippet (TypeScript, Dart, SQL)</label>
-          <textarea id="composerPostCode" class="form-input-element textarea code" rows="2" placeholder="// Paste snippet here if relevant..."></textarea>
-        </div>
-
-        <div class="modal-actions-footer">
-          <button type="button" class="action-btn-secondary" id="btnCancelComposer">Cancel</button>
-          <button type="submit" class="action-btn-primary" id="btnSubmitPublish">
-            <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-            <span>Publish Post</span>
-          </button>
-        </div>
+        <button type="submit" class="submit-btn full">Publish</button>
       </form>
     </div>
   </div>
 
-  <!-- 2. COMMUNITY PREVIEW MODAL (SRS FR-11 & FR-12) -->
+  <!-- Community Modal -->
   <div class="modal-backdrop-overlay hidden" id="communityModal">
     <div class="modal-card-box">
       <div class="modal-header-bar">
-        <span class="preview-comm-badge" id="modalCommBadge">Academic Tier</span>
+        <span class="preview-badge" id="modalCommBadge">Academic</span>
         <button class="close-modal-icon-btn" id="btnCloseCommunityModal">
           <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <div class="community-preview-inner">
-        <h3 id="modalCommTitle">Software Architecture & Design Patterns</h3>
-        <p id="modalCommDesc">In-depth exploration of clean architecture, microservices, and design patterns.</p>
-        
-        <div class="modal-meta-chips">
-          <span class="m-chip" id="modalCommMembers">
-            <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            840 verified members
-          </span>
-          <span class="m-chip">
-            <svg class="svg-icon mini" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
-            Active daily
-          </span>
-        </div>
-
-        <div class="community-guidelines-box">
-          <h5>Community Code of Conduct</h5>
-          <ol class="guidelines-list" id="modalCommRules">
-            <!-- Rules populated via JS -->
-          </ol>
-        </div>
-
-        <!-- Screening Questions if Private / Request Mode -->
-        <div class="screening-box-group hidden" id="modalCommScreening">
-          <h5>Moderator Screening Questions (Required)</h5>
-          <div class="form-control-row">
-            <label>What is your current semester and project interest?</label>
-            <input type="text" class="form-input-element" id="modalScreenQ1" placeholder="e.g. 5th Semester, Capstone in AI">
-          </div>
-        </div>
-
-        <div class="modal-actions-footer">
-          <button class="action-btn-primary full-width" id="btnExecuteJoinModal">
-            <span id="modalJoinBtnLabel">Instant Join Community</span>
-          </button>
-        </div>
+      <h3 id="modalCommTitle">Software Architecture</h3>
+      <p id="modalCommDesc" class="modal-desc">Clean architecture and system design patterns.</p>
+      
+      <div class="rules-box">
+        <h5>Guidelines</h5>
+        <ul id="modalCommRules"></ul>
       </div>
+
+      <button class="submit-btn full" id="btnExecuteJoinModal">
+        <span id="modalJoinBtnLabel">Join Community</span>
+      </button>
     </div>
   </div>
 
-  <!-- 3. OPPORTUNITY DETAIL & APPLY MODAL (SRS 3.7 & FR-31) -->
+  <!-- Opportunity Modal -->
   <div class="modal-backdrop-overlay hidden" id="opportunityModal">
-    <div class="modal-card-box large">
+    <div class="modal-card-box">
       <div class="modal-header-bar">
-        <div class="opp-verified-header-badge">
-          <svg class="svg-icon mini" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-          <span>Verified Corporate Employer • Superior Career Office Vetted</span>
-        </div>
+        <span class="verified-chip">Verified Partner</span>
         <button class="close-modal-icon-btn" id="btnCloseOppModal">
           <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <div class="opp-modal-inner">
-        <h3 id="modalOppRole">Software Engineering Intern</h3>
-        <span class="opp-company-subtitle" id="modalOppCompany">Systems Limited • Lahore (Hybrid)</span>
+      <h3 id="modalOppRole">Software Engineering Intern</h3>
+      <span class="company-sub" id="modalOppCompany">Systems Limited • Lahore</span>
 
-        <div class="opp-highlight-tags-grid">
-          <div class="opp-stat-chip">
-            <span class="lbl">Monthly Stipend</span>
-            <strong class="val" id="modalOppStipend">PKR 45,000 / mo</strong>
-          </div>
-          <div class="opp-stat-chip">
-            <span class="lbl">Duration</span>
-            <strong class="val" id="modalOppDuration">3 Months</strong>
-          </div>
-          <div class="opp-stat-chip">
-            <span class="lbl">Auto-Expiration</span>
-            <strong class="val alert" id="modalOppExpiry">6 Days Left</strong>
-          </div>
-        </div>
-
-        <div class="opp-details-text-block">
-          <h4>Position Overview</h4>
-          <p id="modalOppDesc">Work alongside our enterprise architecture team building cloud microservices with NestJS, TypeScript, and Kafka.</p>
-          
-          <h4>Candidate Requirements</h4>
-          <ul class="opp-bullets-list" id="modalOppCriteria">
-            <!-- Populated via JS -->
-          </ul>
-        </div>
-
-        <form class="opp-application-form" id="formOppApplyModal">
-          <div class="verified-profile-sync-card">
-            <div class="sync-icon">
-              <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <div class="sync-meta">
-              <strong>Applying as: Ali Haroon (Verified Profile)</strong>
-              <span>SU92-BSSEM-F24-296 • Verified Skills, Capstone Projects & GPA Attached</span>
-            </div>
-          </div>
-
-          <div class="form-control-row">
-            <label>Cover Note / Relevant Capstone Work</label>
-            <textarea class="form-input-element textarea" id="inputOppCover" rows="3" placeholder="Highlight relevant coursework, projects, and motivation..." required></textarea>
-          </div>
-
-          <div class="modal-actions-footer">
-            <button type="submit" class="action-btn-primary full-width" id="btnSubmitOppApplication">
-              <span>Submit Verified Application to Employer</span>
-            </button>
-          </div>
-        </form>
+      <div class="opp-quick-tags">
+        <span class="tag-pill salary" id="modalOppStipend">PKR 45,000 / mo</span>
+        <span class="tag-pill" id="modalOppDuration">3 Months</span>
+        <span class="tag-pill alert" id="modalOppExpiry">6 Days Left</span>
       </div>
+
+      <p id="modalOppDesc" class="modal-desc">Work with enterprise engineering teams on cloud microservices.</p>
+
+      <form id="formOppApplyModal">
+        <div class="form-row">
+          <label>Quick Note</label>
+          <textarea class="form-control" id="inputOppCover" rows="2" placeholder="Brief statement..." required></textarea>
+        </div>
+        <button type="submit" class="submit-btn full">Apply with Verified Profile</button>
+      </form>
     </div>
   </div>
 
-  <!-- 4. SAFETY & REPORT MODAL (SRS 3.9 & FR-34, FR-35) -->
+  <!-- Report Modal -->
   <div class="modal-backdrop-overlay hidden" id="reportModal">
     <div class="modal-card-box">
       <div class="modal-header-bar">
-        <h3>Report Content to Safety & Moderation</h3>
+        <h3>Report Content</h3>
         <button class="close-modal-icon-btn" id="btnCloseReportModal">
           <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <form class="report-reasons-form" id="formSubmitReport">
-        <p class="report-instruction">Mandatory Reason Code Required by UniOne Community Safety Policy (SRS Section 3.9):</p>
-
-        <div class="reasons-radio-stack">
-          <label class="reason-radio-card">
+      <form id="formSubmitReport">
+        <div class="reasons-list">
+          <label class="reason-row">
             <input type="radio" name="reportReason" value="harassment" checked>
-            <div class="radio-details">
-              <strong>Harassment, Hate Speech or Peer Discrimination</strong>
-              <span>Targeting students or faculty</span>
-            </div>
+            <span>Harassment or Discrimination</span>
           </label>
-
-          <label class="reason-radio-card">
+          <label class="reason-row">
             <input type="radio" name="reportReason" value="scam">
-            <div class="radio-details">
-              <strong>Fake Opportunity, Unpaid Trap or Scam</strong>
-              <span>Misleading compensation or unverified organization</span>
-            </div>
+            <span>Fake Opportunity or Scam</span>
           </label>
-
-          <label class="reason-radio-card">
-            <input type="radio" name="reportReason" value="dishonesty">
-            <div class="radio-details">
-              <strong>Academic Dishonesty or Examination Leak</strong>
-              <span>Sharing protected exam or graded content</span>
-            </div>
-          </label>
-
-          <label class="reason-radio-card">
+          <label class="reason-row">
             <input type="radio" name="reportReason" value="spam">
-            <div class="radio-details">
-              <strong>Commercial Spam or Off-Topic Clutter</strong>
-              <span>Unrelated to university academic collaboration</span>
-            </div>
+            <span>Commercial Spam</span>
           </label>
         </div>
-
-        <div class="modal-actions-footer">
-          <button type="submit" class="action-btn-danger full-width">Submit Immutable Safety Report</button>
-        </div>
+        <button type="submit" class="submit-btn danger full">Submit Report</button>
       </form>
     </div>
   </div>
 
-  <!-- 5. DOMAIN VERIFICATION & OTP DEMO MODAL (SRS 3.1 & UC-01) -->
+  <!-- OTP Modal -->
   <div class="modal-backdrop-overlay hidden" id="verifyDomainModal">
     <div class="modal-card-box">
       <div class="modal-header-bar">
-        <h3>Institutional Email Verification</h3>
+        <h3>Verify Email</h3>
         <button class="close-modal-icon-btn" id="btnCloseVerifyModal">
           <svg class="svg-icon mini" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <div class="verify-modal-body">
-        <div class="verify-badge-icon">
-          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-        </div>
-        <h4>Verify Academic Credentials</h4>
-        <p>Ensures platform integrity. Rights such as posting internships and joining private project rooms are restricted to verified accounts.</p>
-
-        <div class="form-control-row">
-          <label>University Email</label>
-          <div class="domain-input-group">
-            <input type="text" class="form-input-element" value="su92.bssem.f24.296" readonly>
-            <span class="domain-suffix">@superior.edu.pk</span>
-          </div>
-        </div>
-
-        <div class="otp-boxes-row">
-          <label>Enter 6-Digit One-Time Password (OTP)</label>
-          <div class="otp-inputs-wrapper">
-            <input type="text" maxlength="1" value="7" class="otp-char-box">
-            <input type="text" maxlength="1" value="2" class="otp-char-box">
-            <input type="text" maxlength="1" value="9" class="otp-char-box">
-            <input type="text" maxlength="1" value="4" class="otp-char-box">
-            <input type="text" maxlength="1" value="1" class="otp-char-box">
-            <input type="text" maxlength="1" value="8" class="otp-char-box">
-          </div>
-          <span class="otp-timer-note">Code sent to student inbox • Valid for 10 minutes</span>
-        </div>
-
-        <div class="modal-actions-footer">
-          <button type="button" class="action-btn-primary full-width" id="btnConfirmOtpModal">
-            <span>Verify & Authenticate Account</span>
-          </button>
-        </div>
+      <p class="modal-desc">Enter the 6-digit code sent to your student inbox.</p>
+      <div class="otp-inputs-grid">
+        <input type="text" maxlength="1" value="7" class="otp-cell">
+        <input type="text" maxlength="1" value="2" class="otp-cell">
+        <input type="text" maxlength="1" value="9" class="otp-cell">
+        <input type="text" maxlength="1" value="4" class="otp-cell">
+        <input type="text" maxlength="1" value="1" class="otp-cell">
+        <input type="text" maxlength="1" value="8" class="otp-cell">
       </div>
+      <button class="submit-btn full" id="btnConfirmOtpModal">Confirm</button>
     </div>
   </div>
 
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div class="toast-popup-notification" id="toastPopup">
-    <div class="toast-icon-circle">
-      <svg class="svg-icon mini" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-    </div>
-    <div class="toast-text-body" id="toastPopupMessage">Action completed successfully</div>
+  <!-- Toast Notification -->
+  <div class="toast-popup" id="toastPopup">
+    <span id="toastPopupMessage">Done</span>
   </div>
 
   <script src="app.js"></script>

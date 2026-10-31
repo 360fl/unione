@@ -313,17 +313,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const verifyDomainModal = document.getElementById('verifyDomainModal');
 
   // =========================================================================
-  // 1. SPLASH SCREEN (Quick & Clean)
+  // 1. SPLASH SCREEN (2.5s Stay with Real App Feel)
   // =========================================================================
   function runSplash() {
     splashScreen.classList.remove('fade-out', 'hidden');
     splashProgressBar.style.width = '0%';
-    setTimeout(() => { splashProgressBar.style.width = '60%'; }, 200);
-    setTimeout(() => { splashProgressBar.style.width = '100%'; }, 600);
+
+    // Smooth progress fill over ~2.5 seconds
+    setTimeout(() => { splashProgressBar.style.width = '28%'; }, 300);
+    setTimeout(() => { splashProgressBar.style.width = '68%'; }, 1000);
+    setTimeout(() => { splashProgressBar.style.width = '90%'; }, 1700);
+    setTimeout(() => { splashProgressBar.style.width = '100%'; }, 2200);
+
+    // Fade out at 2500ms (2.5 seconds)
     setTimeout(() => {
       splashScreen.classList.add('fade-out');
-      setTimeout(() => splashScreen.classList.add('hidden'), 350);
-    }, 900);
+      setTimeout(() => splashScreen.classList.add('hidden'), 550);
+    }, 2500);
   }
   runSplash();
 

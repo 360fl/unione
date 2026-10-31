@@ -7,7 +7,7 @@
 
 :root {
   /* Aura Palette: Obsidian Dark Luxury & Molten Amber Gold */
-  --color-forest-dark: #07080A;
+  --color-forest-dark: #FFFFFF;
   --color-forest-primary: #F5A623;
   --color-forest-medium: #E66A23;
   --color-sage: #FFB948;
@@ -206,7 +206,9 @@ body.unione-app-body {
   left: 0;
   right: 0;
   height: 56px;
-  background-color: #FFFFFF;
+  background-color: rgba(12, 13, 18, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
@@ -229,7 +231,7 @@ body.unione-app-body {
 .header-action-btn {
   background: transparent;
   border: none;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -290,7 +292,7 @@ body.unione-app-body {
   font-size: 1.18rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 
 .green-highlight {
@@ -365,8 +367,8 @@ body.unione-app-body {
   top: 52px;
   right: 12px;
   width: 300px;
-  background: rgba(18, 19, 26, 0.85);
-  border: 1px solid var(--color-border);
+  background: #12131A;
+  border: 1px solid rgba(245, 166, 35, 0.25);
   border-radius: var(--radius-md);
   box-shadow: 0 10px 30px rgba(0,0,0,0.12);
   overflow: hidden;
@@ -450,7 +452,7 @@ body.unione-app-body {
 .minimal-page-header h2 {
   font-size: 1.15rem;
   font-weight: 800;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 
 .sub-counter, .verified-tag-indicator {
@@ -531,7 +533,7 @@ body.unione-app-body {
   height: 32px;
   border-radius: 50%;
   background: var(--color-mint-subtle);
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   font-size: 0.76rem;
   font-weight: 800;
   display: flex;
@@ -612,25 +614,26 @@ body.unione-app-body {
 
 .author-label {
   font-weight: 700;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 .meta-right {
   color: var(--color-text-muted);
 }
 
 .clean-card h3 {
-  font-size: 0.94rem;
+  font-size: 0.98rem;
   font-weight: 800;
-  color: var(--color-forest-dark);
-  margin-bottom: 4px;
+  color: #FFFFFF !important;
+  margin-bottom: 6px;
   line-height: 1.35;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .clean-card p {
-  font-size: 0.78rem;
-  color: var(--color-text-body);
-  line-height: 1.45;
-  margin-bottom: 10px;
+  font-size: 0.82rem;
+  color: #D1D1DB !important;
+  line-height: 1.5;
+  margin-bottom: 12px;
 }
 
 .card-bottom-bar {
@@ -651,7 +654,7 @@ body.unione-app-body {
   padding: 3px 10px;
   font-size: 0.74rem;
   font-weight: 700;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   cursor: pointer;
 }
 .upvote-chip.upvoted {
@@ -684,11 +687,12 @@ body.unione-app-body {
   border-radius: var(--radius-xs);
   font-size: 0.68rem;
   font-weight: 600;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 .tag-badge.salary {
-  background: #EAF4EE;
-  color: var(--color-forest-primary);
+  background: rgba(245, 166, 35, 0.15);
+  color: #F5A623;
+  border: 1px solid rgba(245, 166, 35, 0.35);
   font-weight: 700;
 }
 
@@ -744,7 +748,7 @@ body.unione-app-body {
 }
 .chat-tab-btn.active {
   background: rgba(18, 19, 26, 0.85);
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
@@ -793,7 +797,7 @@ body.unione-app-body {
   height: 40px;
   border-radius: 50%;
   background: var(--color-mint-subtle);
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   font-weight: 800;
   font-size: 0.82rem;
   display: flex;
@@ -813,7 +817,7 @@ body.unione-app-body {
 }
 .person-name-row strong {
   font-size: 0.84rem;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 .person-name-row span {
   font-size: 0.68rem;
@@ -850,7 +854,7 @@ body.unione-app-body {
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   padding: 6px;
   display: flex;
   align-items: center;
@@ -884,7 +888,7 @@ body.unione-app-body {
 .chat-user-names strong {
   display: block;
   font-size: 0.84rem;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   line-height: 1.2;
 }
 .chat-user-names span {
@@ -1084,8 +1088,8 @@ body.chat-room-active .chat-bottom-input-bar {
    TAB 6: PROFILE CARD
    ========================================================================== */
 .profile-card {
-  background: rgba(18, 19, 26, 0.85);
-  border: 1px solid var(--color-border);
+  background: #111218;
+  border: 1px solid rgba(245, 166, 35, 0.25);
   border-radius: var(--radius-md);
   overflow: hidden;
 }
@@ -1171,7 +1175,7 @@ body.chat-room-active .chat-bottom-input-bar {
 .stat-cell strong {
   display: block;
   font-size: 1rem;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 .stat-cell span {
   font-size: 0.66rem;
@@ -1251,7 +1255,9 @@ input:checked + .slider:before {
   left: 0;
   right: 0;
   height: 62px;
-  background-color: #FFFFFF;
+  background-color: rgba(12, 13, 18, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--color-border);
   display: flex;
   align-items: center;
@@ -1390,7 +1396,7 @@ input:checked + .slider:before {
 .modal-header-bar h3 {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
 }
 
 .close-modal-icon-btn {
@@ -1412,7 +1418,7 @@ input:checked + .slider:before {
   display: block;
   font-size: 0.74rem;
   font-weight: 700;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   margin-bottom: 4px;
 }
 
@@ -1499,9 +1505,10 @@ input:checked + .slider:before {
   letter-spacing: 0.05em;
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  background: var(--color-mint-subtle);
-  color: var(--color-forest-primary);
-  border: 1px solid rgba(83, 123, 95, 0.25);
+  background: rgba(245, 166, 35, 0.15);
+  color: #F5A623;
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.2);
 }
 
 .verified-chip {
@@ -1512,9 +1519,10 @@ input:checked + .slider:before {
   font-weight: 700;
   padding: 4px 10px;
   border-radius: var(--radius-full);
-  background: #EAF4EE;
-  color: var(--color-forest-primary);
-  border: 1px solid rgba(21, 55, 38, 0.15);
+  background: rgba(245, 166, 35, 0.15);
+  color: #F5A623;
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.2);
 }
 
 .company-sub {
@@ -1536,7 +1544,7 @@ input:checked + .slider:before {
 .rules-box h5 {
   font-size: 0.78rem;
   font-weight: 800;
-  color: var(--color-forest-dark);
+  color: #FFFFFF;
   margin-bottom: 6px;
   letter-spacing: 0.02em;
 }
@@ -1562,8 +1570,9 @@ input:checked + .slider:before {
   border-radius: var(--radius-xs);
 }
 .tag-pill.salary {
-  background: #EAF4EE;
-  color: var(--color-forest-primary);
+  background: rgba(245, 166, 35, 0.15);
+  color: #F5A623;
+  border: 1px solid rgba(245, 166, 35, 0.3);
 }
 .tag-pill.alert {
   color: var(--color-gold);

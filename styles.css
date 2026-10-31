@@ -316,7 +316,7 @@ body.unione-app-body {
 }
 
 /* Popover Dropdown */
-.popover-dropdown {
+.popover-dropdown, .notifications-panel {
   position: absolute;
   top: 52px;
   right: 12px;
@@ -910,6 +910,89 @@ body.unione-app-body {
 }
 .chat-send-icon-btn:active {
   transform: scale(0.92);
+}
+
+/* ==========================================================================
+   NATIVE FULLSCREEN CHAT ROOM (Immersive WhatsApp / Telegram Experience)
+   ========================================================================== */
+body.chat-room-active {
+  overflow: hidden !important;
+}
+
+body.chat-room-active .app-top-header {
+  display: none !important;
+}
+
+body.chat-room-active .app-bottom-footer {
+  display: none !important;
+}
+
+body.chat-room-active .fab-new-post {
+  display: none !important;
+}
+
+body.chat-room-active .app-main-viewport {
+  padding: 0 !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  overflow: hidden !important;
+}
+
+body.chat-room-active #pane-messages {
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 100vh !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  max-width: 100% !important;
+}
+
+body.chat-room-active .chat-wrapper {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-width: 100% !important;
+}
+
+body.chat-room-active .chat-active-view {
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100vh !important;
+  max-height: 100dvh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+body.chat-room-active .active-chat-bar {
+  padding: 12px 16px;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 4px rgba(14, 36, 25, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+body.chat-room-active .chat-bubbles-scroll {
+  flex: 1 !important;
+  min-height: 0 !important;
+  padding: 16px 14px;
+  background: #FAF8F2;
+  overflow-y: auto !important;
+}
+
+body.chat-room-active .chat-bottom-input-bar {
+  padding: 12px 14px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -1px 4px rgba(14, 36, 25, 0.03);
+  position: sticky;
+  bottom: 0;
+  z-index: 20;
 }
 
 /* ==========================================================================

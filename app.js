@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timestamp: Date.now() - 15 * 60 * 1000,
         title: 'Annual Tech Summit & Capstone Demo Day 2026',
         content: 'Industry jury panels from Systems Limited, Arbisoft, and Devsinc on campus. Final project submissions close this week.',
-        image: 'img_tech_summit.svg',
+        image: 'img_tech_summit.jpg',
         votes: 118,
         hasUpvoted: true
       },
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         content: 'Hardware funded by campus lab. Looking for a teammate with Figma and mobile layout experience.',
         collabCapacity: '2 of 4 filled',
         skills: ['Flutter', 'Figma', 'MQTT'],
-        image: 'img_iot_project.svg',
+        image: 'img_iot_project.jpg',
         votes: 42,
         hasUpvoted: true
       },
@@ -368,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // If switching to messages, ensure we show the conversation list inbox
+    document.body.classList.remove('chat-room-active');
     if (tabKey === 'messages') {
       const chatListView = document.getElementById('chatListView');
       const chatActiveStage = document.getElementById('chatActiveStage');
@@ -872,10 +873,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatListView.classList.add('hidden');
     chatActiveStage.classList.remove('hidden');
+    document.body.classList.add('chat-room-active');
     activeChatMessagesScroll.scrollTop = activeChatMessagesScroll.scrollHeight;
   }
 
   btnBackToChatList.addEventListener('click', () => {
+    document.body.classList.remove('chat-room-active');
     chatActiveStage.classList.add('hidden');
     chatListView.classList.remove('hidden');
   });
@@ -1076,9 +1079,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Profile switches
-  document.getElementById('toggleRollVisibility').addEventListener('change', (e) => {
-    showToast(e.target.checked ? 'Roll number visible' : 'Roll number hidden');
-  });
+  const toggleRollVisibility = document.getElementById('toggleRollVisibility');
+  if (toggleRollVisibility && profileRollTag) {
+    toggleRollVisibility.addEventListener('change', (e) => {
+      const isVisible = e.target.checked;
+      if (isVisible) {
+        profileRollTag.style.display = 'inline-block';
+        showToast('Roll number visible on profile');
+      } else {
+        profileRollTag.style.display = 'none';
+        showToast('Roll number hidden from profile');
+      }
+    });
+  }
 
   function escapeHtml(str) {
     if (!str) return '';
